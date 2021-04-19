@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name                    = 'SesameWatchKitSDK'
-    s.version                 = '1.0.0'
+    s.version                 = '2.0.1'
     s.summary                 = 'SesameWatchKitSDK summary.'
     s.homepage                = 'https://jp.candyhouse.co'
 
