@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name                    = 'SesameSDK'
-    s.version                 = '2.0.1'
+    s.version                 = '2.0.2'
     s.summary                 = 'SesameSDK summary.'
     s.homepage                = 'https://jp.candyhouse.co'
 

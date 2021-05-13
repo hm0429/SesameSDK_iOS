@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
 // swift-module-flags: -target arm64_32-apple-watchos6.2 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SesameWatchKitSDK
 import CoreBluetooth
 import CoreData
@@ -158,8 +158,8 @@ public enum WifiModule2Sesame2LockStatus : Swift.UInt8, Swift.CustomStringConver
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.UInt8
   public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
@@ -231,8 +231,8 @@ public protocol CHSesameBotMechStatus : SesameWatchKitSDK.SesameProtocolMechStat
 public enum CHSesameBotUserPreDir : Swift.UInt8 {
   case normal
   case reversed
-  public typealias RawValue = Swift.UInt8
   public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
@@ -240,8 +240,8 @@ public enum CHSesameBotUserPreDir : Swift.UInt8 {
 public enum CHSesameBotButtonMode : Swift.UInt8 {
   case click
   case toggle
-  public typealias RawValue = Swift.UInt8
   public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
@@ -258,8 +258,8 @@ public enum CHSesameBotIntention : Swift.String {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -311,6 +311,7 @@ public protocol SesameProtocolMechStatus {
   var isClutchFailed: Swift.Bool { get }
   var isInLockRange: Swift.Bool { get }
   var isInUnlockRange: Swift.Bool { get }
+  var isBatteryCritical: Swift.Bool { get }
   func getBatteryVoltage() -> Swift.Float
   func getBatteryPrecentage() -> Swift.Int
   func retCodeType() -> SesameWatchKitSDK.Sesame2RetCodeType
@@ -325,8 +326,8 @@ public enum CHSesame2Intention : Swift.String {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -380,10 +381,10 @@ public enum CHSesame2Status : Swift.Equatable {
     case keyNotEncrypted
     public static var debugLevel: Swift.Int
     public static func == (a: SesameWatchKitSDK.SwKeyConvert.SwError, b: SesameWatchKitSDK.SwKeyConvert.SwError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   @_hasMissingDesignatedInitializers open class PrivateKey {
     public static func pemToPKCS1DER(_ pemKey: Swift.String) throws -> Foundation.Data
@@ -439,10 +440,10 @@ public enum CHSesame2Status : Swift.Equatable {
     public enum EncMode {
       case aes128CBC, aes256CBC
       public static func == (a: SesameWatchKitSDK.PEM.EncryptedPrivateKey.EncMode, b: SesameWatchKitSDK.PEM.EncryptedPrivateKey.EncMode) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
-      public func hash(into hasher: inout Swift.Hasher)
     }
     public static func toDER(_ pemKey: Swift.String, passphrase: Swift.String) throws -> Foundation.Data
     public static func toPEM(_ derKey: Foundation.Data, passphrase: Swift.String, mode: SesameWatchKitSDK.PEM.EncryptedPrivateKey.EncMode) -> Swift.String
@@ -466,8 +467,8 @@ public enum CHSesame2Status : Swift.Equatable {
     case keySizeError
     case invalidKey
     public static var debugLevel: Swift.Int
-    public typealias RawValue = SesameWatchKitSDK.CC.CCCryptorStatus
     public init?(rawValue: SesameWatchKitSDK.CC.CCCryptorStatus)
+    public typealias RawValue = SesameWatchKitSDK.CC.CCCryptorStatus
     public var rawValue: SesameWatchKitSDK.CC.CCCryptorStatus {
       get
     }
@@ -480,8 +481,8 @@ public enum CHSesame2Status : Swift.Equatable {
     case rmd128, rmd160, rmd256, rmd320
     case sha1
     case sha224, sha256, sha384, sha512
-    public typealias RawValue = SesameWatchKitSDK.CC.CCDigestAlgorithm
     public init?(rawValue: SesameWatchKitSDK.CC.CCDigestAlgorithm)
+    public typealias RawValue = SesameWatchKitSDK.CC.CCDigestAlgorithm
     public var rawValue: SesameWatchKitSDK.CC.CCDigestAlgorithm {
       get
     }
@@ -490,8 +491,8 @@ public enum CHSesame2Status : Swift.Equatable {
   public typealias CCHmacAlgorithm = Swift.UInt32
   public enum HMACAlg : SesameWatchKitSDK.CC.CCHmacAlgorithm {
     case sha1, md5, sha256, sha384, sha512, sha224
-    public typealias RawValue = SesameWatchKitSDK.CC.CCHmacAlgorithm
     public init?(rawValue: SesameWatchKitSDK.CC.CCHmacAlgorithm)
+    public typealias RawValue = SesameWatchKitSDK.CC.CCHmacAlgorithm
     public var rawValue: SesameWatchKitSDK.CC.CCHmacAlgorithm {
       get
     }
@@ -500,8 +501,8 @@ public enum CHSesame2Status : Swift.Equatable {
   public typealias CCOperation = Swift.UInt32
   public enum OpMode : SesameWatchKitSDK.CC.CCOperation {
     case encrypt, decrypt
-    public typealias RawValue = SesameWatchKitSDK.CC.CCOperation
     public init?(rawValue: SesameWatchKitSDK.CC.CCOperation)
+    public typealias RawValue = SesameWatchKitSDK.CC.CCOperation
     public var rawValue: SesameWatchKitSDK.CC.CCOperation {
       get
     }
@@ -509,16 +510,16 @@ public enum CHSesame2Status : Swift.Equatable {
   public typealias CCMode = Swift.UInt32
   public enum BlockMode : SesameWatchKitSDK.CC.CCMode {
     case ecb, cbc, cfb, ctr, f8, lrw, ofb, xts, rc4, cfb8
-    public typealias RawValue = SesameWatchKitSDK.CC.CCMode
     public init?(rawValue: SesameWatchKitSDK.CC.CCMode)
+    public typealias RawValue = SesameWatchKitSDK.CC.CCMode
     public var rawValue: SesameWatchKitSDK.CC.CCMode {
       get
     }
   }
   public enum AuthBlockMode : SesameWatchKitSDK.CC.CCMode {
     case gcm, ccm
-    public typealias RawValue = SesameWatchKitSDK.CC.CCMode
     public init?(rawValue: SesameWatchKitSDK.CC.CCMode)
+    public typealias RawValue = SesameWatchKitSDK.CC.CCMode
     public var rawValue: SesameWatchKitSDK.CC.CCMode {
       get
     }
@@ -526,8 +527,8 @@ public enum CHSesame2Status : Swift.Equatable {
   public typealias CCAlgorithm = Swift.UInt32
   public enum Algorithm : SesameWatchKitSDK.CC.CCAlgorithm {
     case aes, des, threeDES, cast, rc4, rc2, blowfish
-    public typealias RawValue = SesameWatchKitSDK.CC.CCAlgorithm
     public init?(rawValue: SesameWatchKitSDK.CC.CCAlgorithm)
+    public typealias RawValue = SesameWatchKitSDK.CC.CCAlgorithm
     public var rawValue: SesameWatchKitSDK.CC.CCAlgorithm {
       get
     }
@@ -535,8 +536,8 @@ public enum CHSesame2Status : Swift.Equatable {
   public typealias CCPadding = Swift.UInt32
   public enum Padding : SesameWatchKitSDK.CC.CCPadding {
     case noPadding, pkcs7Padding
-    public typealias RawValue = SesameWatchKitSDK.CC.CCPadding
     public init?(rawValue: SesameWatchKitSDK.CC.CCPadding)
+    public typealias RawValue = SesameWatchKitSDK.CC.CCPadding
     public var rawValue: SesameWatchKitSDK.CC.CCPadding {
       get
     }
@@ -563,8 +564,8 @@ public enum CHSesame2Status : Swift.Equatable {
     public enum AsymmetricPadding : SesameWatchKitSDK.CC.RSA.CCAsymmetricPadding {
       case pkcs1
       case oaep
-      public typealias RawValue = SesameWatchKitSDK.CC.RSA.CCAsymmetricPadding
       public init?(rawValue: SesameWatchKitSDK.CC.RSA.CCAsymmetricPadding)
+      public typealias RawValue = SesameWatchKitSDK.CC.RSA.CCAsymmetricPadding
       public var rawValue: SesameWatchKitSDK.CC.RSA.CCAsymmetricPadding {
         get
       }
@@ -572,8 +573,8 @@ public enum CHSesame2Status : Swift.Equatable {
     public enum AsymmetricSAPadding : Swift.UInt32 {
       case pkcs15
       case pss
-      public typealias RawValue = Swift.UInt32
       public init?(rawValue: Swift.UInt32)
+      public typealias RawValue = Swift.UInt32
       public var rawValue: Swift.UInt32 {
         get
       }
@@ -592,10 +593,10 @@ public enum CHSesame2Status : Swift.Equatable {
       case rfc3526Group5
       case rfc2409Group2
       public static func == (a: SesameWatchKitSDK.CC.DH.DHParam, b: SesameWatchKitSDK.CC.DH.DHParam) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
-      public func hash(into hasher: inout Swift.Hasher)
     }
     open class DH {
       public init(dhParam: SesameWatchKitSDK.CC.DH.DHParam) throws
@@ -629,8 +630,8 @@ public enum CHSesame2Status : Swift.Equatable {
     public typealias CNcrc = Swift.UInt32
     public enum Mode : SesameWatchKitSDK.CC.CRC.CNcrc {
       case crc8, crc8ICODE, crc8ITU, crc8ROHC, crc8WCDMA, crc16, crc16CCITTTrue, crc16CCITTFalse, crc16USB, crc16XMODEM, crc16DECTR, crc16DECTX, crc16ICODE, crc16VERIFONE, crc16A, crc16B, crc16Fletcher, crc32Adler, crc32, crc32CASTAGNOLI, crc32BZIP2, crc32MPEG2, crc32POSIX, crc32XFER, crc64ECMA182
-      public typealias RawValue = SesameWatchKitSDK.CC.CRC.CNcrc
       public init?(rawValue: SesameWatchKitSDK.CC.CRC.CNcrc)
+      public typealias RawValue = SesameWatchKitSDK.CC.CRC.CNcrc
       public var rawValue: SesameWatchKitSDK.CC.CRC.CNcrc {
         get
       }
@@ -649,8 +650,8 @@ public enum CHSesame2Status : Swift.Equatable {
     public typealias CCPseudoRandomAlgorithm = Swift.UInt32
     public enum PRFAlg : SesameWatchKitSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm {
       case sha1, sha224, sha256, sha384, sha512
-      public typealias RawValue = SesameWatchKitSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm
       public init?(rawValue: SesameWatchKitSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm)
+      public typealias RawValue = SesameWatchKitSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm
       public var rawValue: SesameWatchKitSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm {
         get
       }
@@ -685,8 +686,8 @@ public enum CHProductModel : Swift.UInt16 {
   public func productType() -> Swift.Int
   public func deviceModel() -> Swift.String
   public func isLock() -> Swift.Bool
-  public typealias RawValue = Swift.UInt16
   public init?(rawValue: Swift.UInt16)
+  public typealias RawValue = Swift.UInt16
   public var rawValue: Swift.UInt16 {
     get
   }
@@ -707,8 +708,8 @@ public enum CHSesameBikeIntention : Swift.String {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -723,9 +724,9 @@ public enum CHSesameBikeIntention : Swift.String {
   public init(deviceUUID: Foundation.UUID, deviceModel: Swift.String, historyTag: Foundation.Data?, keyIndex: Swift.String, secretKey: Swift.String, sesame2PublicKey: Swift.String)
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc override dynamic public init()
-  required public init(from decoder: Swift.Decoder) throws
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public struct Insert<T> {
   public let item: T
@@ -776,8 +777,8 @@ public enum Sesame2RetCodeType : Swift.UInt8 {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.UInt8
   public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
@@ -804,13 +805,13 @@ public struct CHSesameBikeUnlockSecs {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class CHWifiModule2NetworkStatus {
-  public var isAPWork: Swift.Bool {
+  public var isAPWork: Swift.Bool? {
     get
   }
-  public var isNetwork: Swift.Bool {
+  public var isNetwork: Swift.Bool? {
     get
   }
-  public var isIoTWork: Swift.Bool {
+  public var isIoTWork: Swift.Bool? {
     get
   }
   public var isBindingAPWork: Swift.Bool {
@@ -918,8 +919,8 @@ extension UUID : SesameWatchKitSDK.DiffAware {
 public struct CHGuestKey : Swift.Codable {
   public let guestKeyId: Swift.String
   public var keyName: Swift.String
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol CHBleManagerDelegate : AnyObject {
   func didDiscoverUnRegisteredCHDevices(_ devices: [SesameWatchKitSDK.CHDevice])
@@ -940,8 +941,8 @@ public enum CHScanStatus : Swift.Equatable {
 public enum BleStatus : Swift.String {
   case opened
   case closed
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -955,8 +956,8 @@ extension CHBleManagerDelegate {
 public enum CHDeviceLoginStatus : Swift.String {
   case logined
   case unlogined
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -987,8 +988,8 @@ public var Sesame2WatchKitSDKBundleVersion: Swift.UInt? {
 @_hasMissingDesignatedInitializers public class ServerError : Swift.Codable {
   public var message: Swift.String
   @objc deinit
-  required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 extension Array {
   public func executeIfPresent(_ closure: ([Element]) -> Swift.Void)

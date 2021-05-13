@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SesameSDK
 import AWSAPIGateway
 import AWSCore
@@ -59,10 +59,10 @@ public class Reachability {
       get
     }
     public static func == (a: SesameSDK.Reachability.NetworkStatus, b: SesameSDK.Reachability.NetworkStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum Connection : Swift.CustomStringConvertible {
     @available(*, deprecated, renamed: "unavailable")
@@ -72,10 +72,10 @@ public class Reachability {
       get
     }
     public static func == (a: SesameSDK.Reachability.Connection, b: SesameSDK.Reachability.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public var whenReachable: SesameSDK.Reachability.NetworkReachable?
   public var whenUnreachable: SesameSDK.Reachability.NetworkUnreachable?
@@ -194,8 +194,8 @@ public enum CHSesameBikeIntention : Swift.String {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -243,8 +243,8 @@ public enum Change<T> {
 public struct CHGuestKey : Swift.Codable {
   public let guestKeyId: Swift.String
   public var keyName: Swift.String
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol CHSesameBotBleAdvParameter {
   var interval: Swift.Double { get }
@@ -256,8 +256,8 @@ public protocol CHSesameBotMechStatus : SesameSDK.SesameProtocolMechStatus {
 public enum CHSesameBotUserPreDir : Swift.UInt8 {
   case normal
   case reversed
-  public typealias RawValue = Swift.UInt8
   public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
@@ -265,8 +265,8 @@ public enum CHSesameBotUserPreDir : Swift.UInt8 {
 public enum CHSesameBotButtonMode : Swift.UInt8 {
   case click
   case toggle
-  public typealias RawValue = Swift.UInt8
   public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
@@ -283,8 +283,8 @@ public enum CHSesameBotIntention : Swift.String {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -298,10 +298,10 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
     case keyNotEncrypted
     public static var debugLevel: Swift.Int
     public static func == (a: SesameSDK.SwKeyConvert.SwError, b: SesameSDK.SwKeyConvert.SwError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   @_hasMissingDesignatedInitializers open class PrivateKey {
     public static func pemToPKCS1DER(_ pemKey: Swift.String) throws -> Foundation.Data
@@ -357,10 +357,10 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
     public enum EncMode {
       case aes128CBC, aes256CBC
       public static func == (a: SesameSDK.PEM.EncryptedPrivateKey.EncMode, b: SesameSDK.PEM.EncryptedPrivateKey.EncMode) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
-      public func hash(into hasher: inout Swift.Hasher)
     }
     public static func toDER(_ pemKey: Swift.String, passphrase: Swift.String) throws -> Foundation.Data
     public static func toPEM(_ derKey: Foundation.Data, passphrase: Swift.String, mode: SesameSDK.PEM.EncryptedPrivateKey.EncMode) -> Swift.String
@@ -384,8 +384,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
     case keySizeError
     case invalidKey
     public static var debugLevel: Swift.Int
-    public typealias RawValue = SesameSDK.CC.CCCryptorStatus
     public init?(rawValue: SesameSDK.CC.CCCryptorStatus)
+    public typealias RawValue = SesameSDK.CC.CCCryptorStatus
     public var rawValue: SesameSDK.CC.CCCryptorStatus {
       get
     }
@@ -398,8 +398,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
     case rmd128, rmd160, rmd256, rmd320
     case sha1
     case sha224, sha256, sha384, sha512
-    public typealias RawValue = SesameSDK.CC.CCDigestAlgorithm
     public init?(rawValue: SesameSDK.CC.CCDigestAlgorithm)
+    public typealias RawValue = SesameSDK.CC.CCDigestAlgorithm
     public var rawValue: SesameSDK.CC.CCDigestAlgorithm {
       get
     }
@@ -408,8 +408,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
   public typealias CCHmacAlgorithm = Swift.UInt32
   public enum HMACAlg : SesameSDK.CC.CCHmacAlgorithm {
     case sha1, md5, sha256, sha384, sha512, sha224
-    public typealias RawValue = SesameSDK.CC.CCHmacAlgorithm
     public init?(rawValue: SesameSDK.CC.CCHmacAlgorithm)
+    public typealias RawValue = SesameSDK.CC.CCHmacAlgorithm
     public var rawValue: SesameSDK.CC.CCHmacAlgorithm {
       get
     }
@@ -418,8 +418,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
   public typealias CCOperation = Swift.UInt32
   public enum OpMode : SesameSDK.CC.CCOperation {
     case encrypt, decrypt
-    public typealias RawValue = SesameSDK.CC.CCOperation
     public init?(rawValue: SesameSDK.CC.CCOperation)
+    public typealias RawValue = SesameSDK.CC.CCOperation
     public var rawValue: SesameSDK.CC.CCOperation {
       get
     }
@@ -427,16 +427,16 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
   public typealias CCMode = Swift.UInt32
   public enum BlockMode : SesameSDK.CC.CCMode {
     case ecb, cbc, cfb, ctr, f8, lrw, ofb, xts, rc4, cfb8
-    public typealias RawValue = SesameSDK.CC.CCMode
     public init?(rawValue: SesameSDK.CC.CCMode)
+    public typealias RawValue = SesameSDK.CC.CCMode
     public var rawValue: SesameSDK.CC.CCMode {
       get
     }
   }
   public enum AuthBlockMode : SesameSDK.CC.CCMode {
     case gcm, ccm
-    public typealias RawValue = SesameSDK.CC.CCMode
     public init?(rawValue: SesameSDK.CC.CCMode)
+    public typealias RawValue = SesameSDK.CC.CCMode
     public var rawValue: SesameSDK.CC.CCMode {
       get
     }
@@ -444,8 +444,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
   public typealias CCAlgorithm = Swift.UInt32
   public enum Algorithm : SesameSDK.CC.CCAlgorithm {
     case aes, des, threeDES, cast, rc4, rc2, blowfish
-    public typealias RawValue = SesameSDK.CC.CCAlgorithm
     public init?(rawValue: SesameSDK.CC.CCAlgorithm)
+    public typealias RawValue = SesameSDK.CC.CCAlgorithm
     public var rawValue: SesameSDK.CC.CCAlgorithm {
       get
     }
@@ -453,8 +453,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
   public typealias CCPadding = Swift.UInt32
   public enum Padding : SesameSDK.CC.CCPadding {
     case noPadding, pkcs7Padding
-    public typealias RawValue = SesameSDK.CC.CCPadding
     public init?(rawValue: SesameSDK.CC.CCPadding)
+    public typealias RawValue = SesameSDK.CC.CCPadding
     public var rawValue: SesameSDK.CC.CCPadding {
       get
     }
@@ -481,8 +481,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
     public enum AsymmetricPadding : SesameSDK.CC.RSA.CCAsymmetricPadding {
       case pkcs1
       case oaep
-      public typealias RawValue = SesameSDK.CC.RSA.CCAsymmetricPadding
       public init?(rawValue: SesameSDK.CC.RSA.CCAsymmetricPadding)
+      public typealias RawValue = SesameSDK.CC.RSA.CCAsymmetricPadding
       public var rawValue: SesameSDK.CC.RSA.CCAsymmetricPadding {
         get
       }
@@ -490,8 +490,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
     public enum AsymmetricSAPadding : Swift.UInt32 {
       case pkcs15
       case pss
-      public typealias RawValue = Swift.UInt32
       public init?(rawValue: Swift.UInt32)
+      public typealias RawValue = Swift.UInt32
       public var rawValue: Swift.UInt32 {
         get
       }
@@ -510,10 +510,10 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
       case rfc3526Group5
       case rfc2409Group2
       public static func == (a: SesameSDK.CC.DH.DHParam, b: SesameSDK.CC.DH.DHParam) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
-      public func hash(into hasher: inout Swift.Hasher)
     }
     open class DH {
       public init(dhParam: SesameSDK.CC.DH.DHParam) throws
@@ -547,8 +547,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
     public typealias CNcrc = Swift.UInt32
     public enum Mode : SesameSDK.CC.CRC.CNcrc {
       case crc8, crc8ICODE, crc8ITU, crc8ROHC, crc8WCDMA, crc16, crc16CCITTTrue, crc16CCITTFalse, crc16USB, crc16XMODEM, crc16DECTR, crc16DECTX, crc16ICODE, crc16VERIFONE, crc16A, crc16B, crc16Fletcher, crc32Adler, crc32, crc32CASTAGNOLI, crc32BZIP2, crc32MPEG2, crc32POSIX, crc32XFER, crc64ECMA182
-      public typealias RawValue = SesameSDK.CC.CRC.CNcrc
       public init?(rawValue: SesameSDK.CC.CRC.CNcrc)
+      public typealias RawValue = SesameSDK.CC.CRC.CNcrc
       public var rawValue: SesameSDK.CC.CRC.CNcrc {
         get
       }
@@ -567,8 +567,8 @@ public func preprocess<T>(old: [T], new: [T]) -> [SesameSDK.Change<T>]?
     public typealias CCPseudoRandomAlgorithm = Swift.UInt32
     public enum PRFAlg : SesameSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm {
       case sha1, sha224, sha256, sha384, sha512
-      public typealias RawValue = SesameSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm
       public init?(rawValue: SesameSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm)
+      public typealias RawValue = SesameSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm
       public var rawValue: SesameSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm {
         get
       }
@@ -600,8 +600,8 @@ public enum WifiModule2Sesame2LockStatus : Swift.UInt8, Swift.CustomStringConver
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.UInt8
   public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
@@ -634,9 +634,9 @@ public protocol CHWifiModule2 : SesameSDK.CHDevice {
   public init(deviceUUID: Foundation.UUID, deviceModel: Swift.String, historyTag: Foundation.Data?, keyIndex: Swift.String, secretKey: Swift.String, sesame2PublicKey: Swift.String)
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc override dynamic public init()
-  required public init(from decoder: Swift.Decoder) throws
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 extension Array {
   public func executeIfPresent(_ closure: ([Element]) -> Swift.Void)
@@ -679,11 +679,11 @@ public enum CHProductModel : Swift.UInt16 {
   public func productType() -> Swift.Int
   public func deviceModel() -> Swift.String
   public func isLock() -> Swift.Bool
+  public init?(rawValue: Swift.UInt16)
   public typealias RawValue = Swift.UInt16
   public var rawValue: Swift.UInt16 {
     get
   }
-  public init?(rawValue: Swift.UInt16)
 }
 public protocol CHDevice : AnyObject {
   var rssi: Foundation.NSNumber? { get }
@@ -744,8 +744,8 @@ extension CHSesameBikeDelegate {
 @_hasMissingDesignatedInitializers public class ServerError : Swift.Codable {
   public var message: Swift.String
   @objc deinit
-  required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public protocol CHBleManagerDelegate : AnyObject {
   func didDiscoverUnRegisteredCHDevices(_ devices: [SesameSDK.CHDevice])
@@ -766,8 +766,8 @@ public enum CHScanStatus : Swift.Equatable {
 public enum BleStatus : Swift.String {
   case opened
   case closed
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -781,8 +781,8 @@ extension CHBleManagerDelegate {
 public enum CHDeviceLoginStatus : Swift.String {
   case logined
   case unlogined
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -825,13 +825,13 @@ extension UUID : SesameSDK.DiffAware {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class CHWifiModule2NetworkStatus {
-  public var isAPWork: Swift.Bool {
+  public var isAPWork: Swift.Bool? {
     get
   }
-  public var isNetwork: Swift.Bool {
+  public var isNetwork: Swift.Bool? {
     get
   }
-  public var isIoTWork: Swift.Bool {
+  public var isIoTWork: Swift.Bool? {
     get
   }
   public var isBindingAPWork: Swift.Bool {
@@ -858,8 +858,8 @@ public enum Sesame2RetCodeType : Swift.UInt8 {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.UInt8
   public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
@@ -945,6 +945,7 @@ public protocol SesameProtocolMechStatus {
   var isClutchFailed: Swift.Bool { get }
   var isInLockRange: Swift.Bool { get }
   var isInUnlockRange: Swift.Bool { get }
+  var isBatteryCritical: Swift.Bool { get }
   func getBatteryVoltage() -> Swift.Float
   func getBatteryPrecentage() -> Swift.Int
   func retCodeType() -> SesameSDK.Sesame2RetCodeType
@@ -959,8 +960,8 @@ public enum CHSesame2Intention : Swift.String {
   public var description: Swift.String {
     get
   }
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
