@@ -271,6 +271,7 @@ SWIFT_CLASS("_TtC17SesameWatchKitSDK15CHDeviceManager")
 @end
 
 
+
 SWIFT_CLASS("_TtC17SesameWatchKitSDK15CHSesame2Device")
 @interface CHSesame2Device : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -640,6 +641,7 @@ SWIFT_CLASS("_TtC17SesameWatchKitSDK15CHDeviceManager")
 @interface CHDeviceManager : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 SWIFT_CLASS("_TtC17SesameWatchKitSDK15CHSesame2Device")
