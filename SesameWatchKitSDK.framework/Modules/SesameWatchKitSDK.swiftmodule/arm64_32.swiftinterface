@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
 // swift-module-flags: -target arm64_32-apple-watchos6.2 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SesameWatchKitSDK
 import CoreBluetooth
 import CoreData
@@ -68,6 +68,10 @@ public protocol CHWifiModule2 : SesameWatchKitSDK.CHDevice {
   public var fsmRetCode: Swift.Int8
   public var deviceStatus: SesameWatchKitSDK.CHSesame2Status
   @objc deinit
+}
+public struct CHSesameHistoryPayload {
+  public let histories: [SesameWatchKitSDK.CHSesame2History]
+  public var cursor: Swift.UInt?
 }
 public enum CHSesame2History {
   case manualElse(SesameWatchKitSDK.CHSesame2HistoryData)
@@ -198,7 +202,7 @@ public protocol CHSesame2 : SesameWatchKitSDK.CHSesameLock {
   func unlock(historytag: Foundation.Data?, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   func toggle(historytag: Foundation.Data?, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
   func disableAutolock(historytag: Foundation.Data?, result: @escaping (SesameWatchKitSDK.CHResult<Swift.Int>))
-  func getHistories(page: Swift.UInt, _ result: @escaping SesameWatchKitSDK.CHResult<[SesameWatchKitSDK.CHSesame2History]>)
+  func getHistories(cursor: Swift.UInt?, _ result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHSesameHistoryPayload>)
   func getBleAdvParameter(_ result: @escaping SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHSesame2BleAdvParameter>)
   func enableAutolock(historytag: Foundation.Data?, delay: Swift.Int, result: @escaping (SesameWatchKitSDK.CHResult<Swift.Int>))
   func configureLockPosition(historytag: Foundation.Data?, lockTarget: Swift.Int16, unlockTarget: Swift.Int16, result: @escaping (SesameWatchKitSDK.CHResult<SesameWatchKitSDK.CHEmpty>))
@@ -358,6 +362,7 @@ public enum CHProductModel : Swift.UInt16 {
   case wifiModule2
   case sesameBot
   case bikeLock
+  case sesame4
   public func productType() -> Swift.Int
   public func deviceModel() -> Swift.String
   public func isLock() -> Swift.Bool

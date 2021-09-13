@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SesameSDK
 import AWSAPIGateway
 import AWSCore
@@ -50,7 +50,7 @@ public protocol CHSesame2 : SesameSDK.CHSesameLock {
   func unlock(historytag: Foundation.Data?, result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
   func toggle(historytag: Foundation.Data?, result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
   func disableAutolock(historytag: Foundation.Data?, result: @escaping (SesameSDK.CHResult<Swift.Int>))
-  func getHistories(page: Swift.UInt, _ result: @escaping SesameSDK.CHResult<[SesameSDK.CHSesame2History]>)
+  func getHistories(cursor: Swift.UInt?, _ result: @escaping SesameSDK.CHResult<SesameSDK.CHSesameHistoryPayload>)
   func getBleAdvParameter(_ result: @escaping SesameSDK.CHResult<SesameSDK.CHSesame2BleAdvParameter>)
   func enableAutolock(historytag: Foundation.Data?, delay: Swift.Int, result: @escaping (SesameSDK.CHResult<Swift.Int>))
   func configureLockPosition(historytag: Foundation.Data?, lockTarget: Swift.Int16, unlockTarget: Swift.Int16, result: @escaping (SesameSDK.CHResult<SesameSDK.CHEmpty>))
@@ -192,6 +192,7 @@ public enum CHProductModel : Swift.UInt16 {
   case wifiModule2
   case sesameBot
   case bikeLock
+  case sesame4
   public func productType() -> Swift.Int
   public func deviceModel() -> Swift.String
   public func isLock() -> Swift.Bool
@@ -547,6 +548,10 @@ extension CHDeviceManager {
   public var fsmRetCode: Swift.Int8
   public var deviceStatus: SesameSDK.CHSesame2Status
   @objc deinit
+}
+public struct CHSesameHistoryPayload {
+  public let histories: [SesameSDK.CHSesame2History]
+  public var cursor: Swift.UInt?
 }
 public enum CHSesame2History {
   case manualElse(SesameSDK.CHSesame2HistoryData)
